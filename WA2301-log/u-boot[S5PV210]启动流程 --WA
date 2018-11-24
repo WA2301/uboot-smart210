@@ -1,0 +1,193 @@
+Power On
+BL0 in IROM:
+	Check OM-Pin,Init HS-MMC Controller			//初始化SD控制器
+	Copy 16k Code from SD-Card Block1 to SRAM 	//S5PV210:Block0 为保留，
+										      	//所以写SD卡时seek=1
+
+/** IROM: 0x0000_0000 - 0x0000_FFFF 64KB **/
+/** SRAM: 0xD002_0000 - 0x......... 16KB **/    //前16字节为BL1长度及校验和
+												//所以实际跳转启动地址为0xD002_0010
+												//用MMC启动时，相关信息必须放到指定位置，如容量等
+												//如：globalBlockSize:0xD0037480	
+/*****************************************************************************/
+reset								//start.S
+	cpu_init_crit					
+		lowlevel_init				//lowlevel_init.S
+			system_clock_init
+			mem_ctrl_asm_init		//内存初始化			
+			uart_asm_init			//实际初始化串口函数 
+			tzpc_init				//Setting TZPC[TrustZone Protection Controller]
+
+			nand_asm_init			//Print'O'
+									//Print'K'
+
+									//call_board_init_f
+	board_init_f					//  /arch/arm/cpu/armv7/s5pc1xx/mmc_boot.c
+		copy_uboot_to_ram()			//使用内置复制函数进行复制，0xD0037F98：CopySDMMCtoMem
+									// copy_bl2(0, , ,	CONFIG_SYS_TEXT_BASE, 0);
+									//使用内置参数 0xD0037488:V210_SDMMC_BASE
+			
+		(*uboot)();					//uboot = (void *)CONFIG_SYS_TEXT_BASE;0x23E00000
+									
+									//S5PV210 Copy: 16K
+									//Actually Code: 3K
+									//Padding to:   24K
+									//SD 扇区为512Byte，统一大小
+									//SD 扇区 1：smart210-spl.bin
+									//SD 扇区49：u-boot.bin
+/*****************************************************************************/
+reset								//start.S
+	cpu_init_crit					
+		lowlevel_init				//lowlevel_init.S
+			system_clock_init
+			mem_ctrl_asm_init		//内存初始化			
+			uart_asm_init			//实际初始化串口函数 
+			tzpc_init				//Setting TZPC[TrustZone Protection Controller]
+
+			nand_asm_init			//Print'O'
+									//Print'K'
+
+	board_init_f					//  /arch/arm/lib/board.c
+		arch_cpu_init				// init_fnc_t *init_sequence[] = 
+		board_early_init_f			// {
+		timer_init					//
+		get_clocks					//
+		env_init					//
+		init_baudrate				//
+		serial_init					//
+		console_init_f				//
+		display_banner				//
+		print_cpuinfo				//
+		checkboard					//
+		init_func_i2c				//
+		dram_init					// }
+
+		dram_init_banksize();
+		display_dram_config();		//打印 “DRAM:  512 MiB”
+
+		relocate_code				//无返回值，由SPL 进入 u-boot，从此进入浩瀚的RAM中...
+			stack_setup
+			copy_loop
+			jump_2_ram				//此处指C语言环境已布置好
+
+			board_init_r			//We are now running from RAM and have a "normal" C environment
+				enable_caches();	//同	__enable_caches Print "WARNING: Caches not enabled"
+				board_init();
+					PWM Moudle();
+
+				serial_initialize();
+				nand_init();
+				env_relocate()
+				{
+					env_relocate_spec ()			// \common\env_nand.c
+					{
+						int ret;
+						char buf[CONFIG_ENV_SIZE];	//环境变量大小  See include\configs\smart210.h
+													//#define CONFIG_ENV_SIZE         0x4000  /* 16KB */
+													//其中包括bootargs、bootm等需与下文kernel存储位置及rootfs一致
+						ret = readenv(CONFIG_ENV_OFFSET, (u_char *)buf);
+													//读取Nand中环境变量
+													//#define CONFIG_ENV_OFFSET     0x100000  /*  1MB */
+
+						env_import(buf, 1)
+						{
+							set_default_env()...	//判断读入环境变量是否有效，无效设置为默认值
+						}
+					}
+				}
+				stdio_init();
+				jumptable_init();
+				console_init_r();
+				arch_misc_init();
+				misc_init_r();
+				interrupt_init();
+				enable_interrupts();
+
+				board_late_init();
+
+				bb_miiphy_init();
+				eth_initialize(gd->bd);
+
+				main_loop()
+				{
+					abortboot (bootdelay);					//等待自动启动...
+					parse_string_outer(s,,);				//s = "nand read 0x20000000 0x300000 0x500000;bootm 0x20000000"
+					{
+						do_nand();							//  1."nand"	/common/cmd_nand.c
+
+						do_bootm							//  2."bootm"   /common/cmd_bootm.c
+						{
+							bootm_start
+							{
+								bootm_start_lmb
+								{
+									boot_get_kernel			//Wrong Image Format for bootm command								
+								}
+															//ERROR: can't get kernel image
+							}
+
+							/** OS image 正确时的分支 ××/
+							bootm_load_os
+							do_bootm_linux
+								(*kernel_entry)()
+							/** OS image 正确时的分支 ××/
+
+						}							
+					}
+
+					parse_file_outer()						// /common/hush.c
+					{
+						parse_stream_outer
+						{
+							do {
+								parse_stream				//在里面等下一条指令...
+								{
+									#define b_getch
+									file_get()
+									{
+										get_user_input(i)
+										{
+											readline
+											{
+												readline_into_buffer
+												{
+															//Print "[Smart210#] "
+													cread_line
+													{
+														
+														while (1) 
+														{
+															...
+															ichar = getcmd_getch();
+
+															if ((ichar == '\n') || (ichar == '\r')) {
+																putc('\n');
+																break;
+															}
+															...
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								
+								
+							}while (rcode != -1 && !(flag & FLAG_EXIT_FROM_LOOP));
+						}
+					}
+
+				}
+
+
+
+
+
+
+
+
+
+do_bootm_linux
+	(*kernel_entry)()
+

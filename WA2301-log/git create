@@ -1,0 +1,7 @@
+WA2301:
+echo "# uboot-smart210" >> README.md	//更改文件
+git init								//进入路径后进行初始化
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:WA2301/uboot-smart210.git	//与远程库进行关联
+git push -u origin master
