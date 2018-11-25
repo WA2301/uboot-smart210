@@ -224,7 +224,7 @@ LIBS += drivers/video/libvideo.o
 LIBS += drivers/watchdog/libwatchdog.o
 LIBS += common/libcommon.o
 LIBS += lib/libfdt/libfdt.o
-LIBS += post/libpost.o
+#LIBS += post/libpost.o
 
 ifeq ($(SOC),omap3)
 LIBS += $(CPUDIR)/omap-common/libomap-common.o
