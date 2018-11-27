@@ -32,7 +32,7 @@ unsigned int s5p_cpu_rev = 1;
 #ifdef CONFIG_ARCH_CPU_INIT
 int arch_cpu_init(void)
 {
-	s5p_set_cpu_id();
+	s5p_set_cpu_id();//WA2301:Where are the DAMN you ??????
 
 	return 0;
 }

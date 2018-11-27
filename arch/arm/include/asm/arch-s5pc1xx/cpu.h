@@ -61,7 +61,7 @@
 /* CPU detection macros */
 extern unsigned int s5p_cpu_id;
 
-static inline void s5p_set_cpu_id(void)
+static inline void s5p_set_cpu_id(void) //Bye Source insight....
 {
 	s5p_cpu_id = readl(S5PC100_PRO_ID);
 	s5p_cpu_id = 0xC000 | ((s5p_cpu_id & 0x00FFF000) >> 12);

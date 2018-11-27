@@ -85,7 +85,8 @@ endif
 # When none of the above methods is used the local build is performed and
 # the object files are placed in the source directory.
 #
-
+#æ·»åŠ  O=obj/ è®¾ç½®è¾“å‡ºè·¯å¾„ WA2301
+O := .obj/
 ifdef O
 ifeq ("$(origin O)", "command line")
 BUILD_DIR := $(O)
@@ -199,7 +200,7 @@ LIBS += fs/cramfs/libcramfs.o fs/fat/libfat.o fs/fdos/libfdos.o fs/jffs2/libjffs
 	fs/ubifs/libubifs.o
 LIBS += net/libnet.o
 LIBS += disk/libdisk.o
-LIBS += drivers/bios_emulator/libatibiosemu.o
+#LIBS += drivers/bios_emulator/libatibiosemu.o
 LIBS += drivers/block/libblock.o
 LIBS += drivers/dma/libdma.o
 LIBS += drivers/gpio/libgpio.o
@@ -291,7 +292,7 @@ endif
 # Always append ALL so that arch config.mk's can add custom ones
 ALL-y += $(obj)u-boot.bin
 
-#Ê¹ÄÜ±àÒëu-boot-spl.bin ½ø¶øºÏ²¢Éú³É smart210-uboot.bin
+#Ê¹ï¿½Ü±ï¿½ï¿½ï¿½u-boot-spl.bin ï¿½ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ smart210-uboot.bin
 ALL-$(CONFIG_SPL) += $(obj)spl/u-boot-spl.bin
 
 all:		$(ALL-y)
@@ -308,7 +309,7 @@ GEN_UBOOT = \
 			--start-group $(__LIBS) --end-group $(PLATFORM_LIBS) \
 			-Map u-boot.map -o u-boot
 
-#Ö÷Òª¹¤×÷Á¿ÎªÉú³Éu-boot
+#ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½u-boot
 $(obj)u-boot:	depend $(SUBDIRS) $(OBJS) $(LIBBOARD) $(LIBS) $(LDSCRIPT) $(obj)u-boot.lds
 		$(GEN_UBOOT)
 

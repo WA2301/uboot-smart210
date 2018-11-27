@@ -33,7 +33,7 @@
 
 struct led_tbl_s {
 	char		*string;	/* String for use in the command */
-	led_id_t	mask;		/* Mask used for calling __led_set() */
+	unsigned long	mask;		/* Mask used for calling __led_set() */
 	void		(*off)(void);	/* Optional function for turning LED off */
 	void		(*on)(void);	/* Optional function for turning LED on */
 	void		(*toggle)(void);/* Optional function for toggling LED */

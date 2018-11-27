@@ -239,7 +239,7 @@ init_fnc_t *init_sequence[] = {
 #endif
 	timer_init,		/* initialize timer */
 #ifdef CONFIG_FSL_ESDHC
-	get_clocks,
+//	get_clocks,
 #endif
 	env_init,		/* initialize environment */
 

@@ -681,7 +681,7 @@ Linker script and memory map
                 0x23e275e0                enable_l2cache
                 0x23e27600                set_l2cache_auxctrl
                 0x23e27620                set_l2cache_auxctrl_cycle
- .text          0x23e27660       0x60 /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+ .text          0x23e27660       0x60 /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
                 0x23e27660                raise
                 0x23e276bc                __aeabi_unwind_cpp_pr0
  .text          0x23e276c0      0x20c /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
@@ -789,7 +789,7 @@ Linker script and memory map
  .rodata.str1.1
                 0x23e31227       0x2e board/samsung/smart210/libsmart210.o(smart210.o)
  .rodata.str1.1
-                0x23e31255       0x73 /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+                0x23e31255       0x73 /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
                                  0x75 (size before relaxing)
 
 .hash           0x23e312c8       0x44
@@ -837,7 +837,7 @@ Linker script and memory map
  .data          0x23e33000        0x0 board/samsung/smart210/libsmart210.o(smart210.o)
  .data          0x23e33000        0x0 board/samsung/smart210/libsmart210.o(lowlevel_init.o)
  .data          0x23e33000        0x0 board/samsung/smart210/libsmart210.o(mem_setup.o)
- .data          0x23e33000        0x0 /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+ .data          0x23e33000        0x0 /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
  .data          0x23e33000        0x0 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
  .data          0x23e33000        0x0 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_divsi3.o)
  .data          0x23e33000        0x0 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_lshrdi3.o)
@@ -1049,7 +1049,7 @@ Linker script and memory map
  .bss           0x23e68f00        0x4 board/samsung/smart210/libsmart210.o(smart210.o)
  .bss           0x23e68f04        0x0 board/samsung/smart210/libsmart210.o(lowlevel_init.o)
  .bss           0x23e68f04        0x0 board/samsung/smart210/libsmart210.o(mem_setup.o)
- .bss           0x23e68f04        0x0 /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+ .bss           0x23e68f04        0x0 /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
  .bss           0x23e68f04        0x0 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
  .bss           0x23e68f04        0x0 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_divsi3.o)
  .bss           0x23e68f04        0x0 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_lshrdi3.o)
@@ -1115,7 +1115,7 @@ LOAD lib/zlib/libz.o
 LOAD net/libnet.o
 LOAD board/samsung/smart210/libsmart210.o
 END GROUP
-LOAD /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+LOAD /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
 LOAD /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a
 OUTPUT(u-boot elf32-littlearm)
 
@@ -1164,7 +1164,7 @@ OUTPUT(u-boot elf32-littlearm)
  .ARM.attributes
                 0x00000312       0x19 board/samsung/smart210/libsmart210.o(mem_setup.o)
  .ARM.attributes
-                0x0000032b       0x29 /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+                0x0000032b       0x29 /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
  .ARM.attributes
                 0x00000354       0x28 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
  .ARM.attributes
@@ -1217,7 +1217,7 @@ OUTPUT(u-boot elf32-littlearm)
  .note.GNU-stack
                 0x00000000        0x0 board/samsung/smart210/libsmart210.o(smart210.o)
  .note.GNU-stack
-                0x00000000        0x0 /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+                0x00000000        0x0 /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
  .note.GNU-stack
                 0x00000000        0x0 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
  .note.GNU-stack
@@ -1251,37 +1251,37 @@ OUTPUT(u-boot elf32-littlearm)
  .comment       0x00000000       0x1c lib/zlib/libz.o
  .comment       0x00000000       0x8c net/libnet.o
  .comment       0x00000000       0x1c board/samsung/smart210/libsmart210.o(smart210.o)
- .comment       0x00000000       0x1c /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+ .comment       0x00000000       0x1c /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
 
-.debug_line     0x00000000     0xeb0d
+.debug_line     0x00000000     0xee2d
  .debug_line    0x00000000       0xe8 arch/arm/cpu/armv7/start.o
- .debug_line    0x000000e8      0x831 arch/arm/cpu/armv7/libarmv7.o
- .debug_line    0x00000919      0x3db arch/arm/cpu/armv7/s5p-common/libs5p-common.o
- .debug_line    0x00000cf4      0x227 arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o
- .debug_line    0x00000f1b      0x7c8 arch/arm/lib/libarm.o
- .debug_line    0x000016e3     0x5a36 common/libcommon.o
- .debug_line    0x00007119      0x384 disk/libdisk.o
- .debug_line    0x0000749d      0x144 drivers/gpio/libgpio.o
- .debug_line    0x000075e1      0x910 drivers/mmc/libmmc.o
- .debug_line    0x00007ef1      0x1c7 drivers/mtd/libmtd.o
- .debug_line    0x000080b8     0x1f40 drivers/mtd/nand/libnand.o
- .debug_line    0x00009ff8      0x3da drivers/net/libnet.o
- .debug_line    0x0000a3d2       0xa2 drivers/pcmcia/libpcmcia.o
- .debug_line    0x0000a474      0x1fc drivers/serial/libserial.o
- .debug_line    0x0000a670      0x703 fs/fat/libfat.o
- .debug_line    0x0000ad73     0x194d lib/libgeneric.o
- .debug_line    0x0000c6c0      0xa60 lib/zlib/libz.o
- .debug_line    0x0000d120     0x11dd net/libnet.o
- .debug_line    0x0000e2fd      0x1b9 board/samsung/smart210/libsmart210.o(smart210.o)
- .debug_line    0x0000e4b6      0x12e board/samsung/smart210/libsmart210.o(lowlevel_init.o)
- .debug_line    0x0000e5e4      0x15f board/samsung/smart210/libsmart210.o(mem_setup.o)
- .debug_line    0x0000e743       0x7e /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
- .debug_line    0x0000e7c1       0x9e /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
- .debug_line    0x0000e85f       0xaa /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_divsi3.o)
- .debug_line    0x0000e909       0x81 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_lshrdi3.o)
- .debug_line    0x0000e98a       0x81 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashrdi3.o)
- .debug_line    0x0000ea0b       0x81 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashldi3.o)
- .debug_line    0x0000ea8c       0x81 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_dvmd_lnx.o)
+ .debug_line    0x000000e8      0x859 arch/arm/cpu/armv7/libarmv7.o
+ .debug_line    0x00000941      0x403 arch/arm/cpu/armv7/s5p-common/libs5p-common.o
+ .debug_line    0x00000d44      0x231 arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o
+ .debug_line    0x00000f75      0x7ff arch/arm/lib/libarm.o
+ .debug_line    0x00001774     0x5b67 common/libcommon.o
+ .debug_line    0x000072db      0x393 disk/libdisk.o
+ .debug_line    0x0000766e      0x14e drivers/gpio/libgpio.o
+ .debug_line    0x000077bc      0x924 drivers/mmc/libmmc.o
+ .debug_line    0x000080e0      0x1d1 drivers/mtd/libmtd.o
+ .debug_line    0x000082b1     0x1f81 drivers/mtd/nand/libnand.o
+ .debug_line    0x0000a232      0x3e4 drivers/net/libnet.o
+ .debug_line    0x0000a616       0xac drivers/pcmcia/libpcmcia.o
+ .debug_line    0x0000a6c2      0x206 drivers/serial/libserial.o
+ .debug_line    0x0000a8c8      0x712 fs/fat/libfat.o
+ .debug_line    0x0000afda     0x19bb lib/libgeneric.o
+ .debug_line    0x0000c995      0xa6a lib/zlib/libz.o
+ .debug_line    0x0000d3ff     0x120f net/libnet.o
+ .debug_line    0x0000e60e      0x1c3 board/samsung/smart210/libsmart210.o(smart210.o)
+ .debug_line    0x0000e7d1      0x12e board/samsung/smart210/libsmart210.o(lowlevel_init.o)
+ .debug_line    0x0000e8ff      0x15f board/samsung/smart210/libsmart210.o(mem_setup.o)
+ .debug_line    0x0000ea5e       0x83 /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
+ .debug_line    0x0000eae1       0x9e /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
+ .debug_line    0x0000eb7f       0xaa /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_divsi3.o)
+ .debug_line    0x0000ec29       0x81 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_lshrdi3.o)
+ .debug_line    0x0000ecaa       0x81 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashrdi3.o)
+ .debug_line    0x0000ed2b       0x81 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashldi3.o)
+ .debug_line    0x0000edac       0x81 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_dvmd_lnx.o)
 
 .debug_info     0x00000000    0x3a448
  .debug_info    0x00000000       0x5d arch/arm/cpu/armv7/start.o
@@ -1305,7 +1305,7 @@ OUTPUT(u-boot elf32-littlearm)
  .debug_info    0x000391fb      0xbe3 board/samsung/smart210/libsmart210.o(smart210.o)
  .debug_info    0x00039dde       0x69 board/samsung/smart210/libsmart210.o(lowlevel_init.o)
  .debug_info    0x00039e47       0x65 board/samsung/smart210/libsmart210.o(mem_setup.o)
- .debug_info    0x00039eac       0xce /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+ .debug_info    0x00039eac       0xce /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
  .debug_info    0x00039f7a       0xcd /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
  .debug_info    0x0003a047       0xcd /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_divsi3.o)
  .debug_info    0x0003a114       0xcd /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_lshrdi3.o)
@@ -1335,7 +1335,7 @@ OUTPUT(u-boot elf32-littlearm)
  .debug_abbrev  0x0000bf45      0x2e3 board/samsung/smart210/libsmart210.o(smart210.o)
  .debug_abbrev  0x0000c228       0x14 board/samsung/smart210/libsmart210.o(lowlevel_init.o)
  .debug_abbrev  0x0000c23c       0x14 board/samsung/smart210/libsmart210.o(mem_setup.o)
- .debug_abbrev  0x0000c250       0x78 /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+ .debug_abbrev  0x0000c250       0x78 /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
  .debug_abbrev  0x0000c2c8       0x14 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
  .debug_abbrev  0x0000c2dc       0x14 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_divsi3.o)
  .debug_abbrev  0x0000c2f0       0x14 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_lshrdi3.o)
@@ -1385,7 +1385,7 @@ OUTPUT(u-boot elf32-littlearm)
  .debug_aranges
                 0x00000be0       0x20 board/samsung/smart210/libsmart210.o(mem_setup.o)
  .debug_aranges
-                0x00000c00       0x20 /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+                0x00000c00       0x20 /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
  .debug_aranges
                 0x00000c20       0x20 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
  .debug_aranges
@@ -1436,7 +1436,7 @@ OUTPUT(u-boot elf32-littlearm)
  .debug_pubnames
                 0x00003e00       0x96 board/samsung/smart210/libsmart210.o(smart210.o)
  .debug_pubnames
-                0x00003e96       0x37 /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+                0x00003e96       0x37 /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
 
 .debug_frame    0x00000000     0x5954
  .debug_frame   0x00000000      0x590 arch/arm/cpu/armv7/libarmv7.o
@@ -1456,7 +1456,7 @@ OUTPUT(u-boot elf32-littlearm)
  .debug_frame   0x00004e88      0x11c lib/zlib/libz.o
  .debug_frame   0x00004fa4      0x888 net/libnet.o
  .debug_frame   0x0000582c       0xac board/samsung/smart210/libsmart210.o(smart210.o)
- .debug_frame   0x000058d8       0x3c /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+ .debug_frame   0x000058d8       0x3c /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
  .debug_frame   0x00005914       0x20 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
  .debug_frame   0x00005934       0x20 /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_divsi3.o)
 
@@ -1497,7 +1497,7 @@ OUTPUT(u-boot elf32-littlearm)
                                0x1989 (size before relaxing)
  .debug_str     0x00008daa      0x15f board/samsung/smart210/libsmart210.o(smart210.o)
                                 0x492 (size before relaxing)
- .debug_str     0x00008f09       0x32 /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+ .debug_str     0x00008f09       0x32 /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
                                  0xf9 (size before relaxing)
 
 .debug_loc      0x00000000    0x2a44b
@@ -1518,7 +1518,7 @@ OUTPUT(u-boot elf32-littlearm)
  .debug_loc     0x000250ff     0x2625 lib/zlib/libz.o
  .debug_loc     0x00027724     0x2aac net/libnet.o
  .debug_loc     0x0002a1d0      0x23d board/samsung/smart210/libsmart210.o(smart210.o)
- .debug_loc     0x0002a40d       0x3e /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+ .debug_loc     0x0002a40d       0x3e /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
 
 .debug_pubtypes
                 0x00000000     0x3bdb
@@ -1559,7 +1559,7 @@ OUTPUT(u-boot elf32-littlearm)
  .debug_pubtypes
                 0x00003b26       0xa3 board/samsung/smart210/libsmart210.o(smart210.o)
  .debug_pubtypes
-                0x00003bc9       0x12 /home/beta/uboot_smart210/arch/arm/lib/eabi_compat.o
+                0x00003bc9       0x12 /home/beta/uboot_smart210/obj/arch/arm/lib/eabi_compat.o
 
 .debug_ranges   0x00000000     0x27e8
  .debug_ranges  0x00000000      0x300 arch/arm/cpu/armv7/libarmv7.o
